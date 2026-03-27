@@ -1,0 +1,18 @@
+# Personal study notes — not for submission
+TeachMuthu.md
+
+# Notebook patching scripts — build tools, not course content
+/*.py
+
+# Python virtual environment
+.venv/
+
+# Claude Code memory
+.claude/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Python cache
+__pycache__/
+*.pyc
