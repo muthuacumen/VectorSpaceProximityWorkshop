@@ -185,7 +185,7 @@ Measures how much two human judges agree on relevance labels, **corrected for ra
 
 ### Prerequisites
 
-- Python 3.9 or higher
+- [Miniconda](https://docs.conda.io/en/latest/miniconda.html) (or Anaconda)
 - Git
 
 ### Step 1 — Clone the repository
@@ -195,19 +195,19 @@ git clone https://github.com/muthuacumen/VectorSpaceProximityWorkshop.git
 cd VectorSpaceProximityWorkshop
 ```
 
-### Step 2 — Create and activate a virtual environment
+### Step 2 — Create a conda environment
 
 ```bash
-# Windows
-python -m venv .venv
-.venv\Scripts\activate
-
-# macOS / Linux
-python -m venv .venv
-source .venv/bin/activate
+conda create -n vsp_workshop python=3.11 -y
 ```
 
-### Step 3 — Install dependencies
+### Step 3 — Activate the environment
+
+```bash
+conda activate vsp_workshop
+```
+
+### Step 4 — Install dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -215,15 +215,23 @@ pip install -r requirements.txt
 
 This installs: `numpy`, `pandas`, `scikit-learn`, `matplotlib`, `seaborn`, `nltk`, `jinja2`, and `ipykernel`.
 
-### Step 4 — Launch Jupyter
+### Step 5 — Register the environment as a Jupyter kernel
+
+```bash
+python -m ipykernel install --user --name vsp_workshop --display-name "Python (vsp_workshop)"
+```
+
+### Step 6 — Launch Jupyter
 
 ```bash
 jupyter notebook
 ```
 
-Or open the folder in VS Code and use the built-in Jupyter extension.
+When the notebook opens, select **Kernel → Change Kernel → Python (vsp_workshop)** to ensure it runs in the correct environment.
 
-### Step 5 — Run the notebooks in order
+> Alternatively, open the folder in **VS Code**, select the `vsp_workshop` conda environment from the kernel picker in the top-right corner of the notebook.
+
+### Step 7 — Run the notebooks in order
 
 | Order | Notebook | Purpose |
 |---|---|---|
@@ -232,11 +240,11 @@ Or open the folder in VS Code and use the built-in Jupyter extension.
 
 > **Important**: Run cells **in order from top to bottom**. Later cells depend on variables defined in earlier cells (e.g., `corpus_df`, `vectorizer`, `tfidf_matrix`).
 
-### Step 6 — NLTK data (auto-downloaded)
+### Step 8 — NLTK data (auto-downloaded)
 
 The normalization cells call `nltk.download('stopwords', quiet=True)` automatically. On first run, NLTK will download ~1 MB of data. No manual action needed.
 
-### Step 7 — 20 Newsgroups dataset (auto-downloaded)
+### Step 9 — 20 Newsgroups dataset (auto-downloaded)
 
 The student challenge cell calls `fetch_20newsgroups(subset='train', ...)` automatically. On first run, sklearn downloads ~15 MB. Subsequent runs use the cached version.
 
